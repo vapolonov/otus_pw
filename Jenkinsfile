@@ -22,17 +22,18 @@ pipeline {
                 sh 'mvn clean test'
             }
         }
+    }
+    post {
+        always {
+            echo "Generating Allure report..."
 
-        stage('Allure report') {
-            steps {
-                allure([
-                    includeProperties: false,
-                    jdk: '',
-                    properties: [],
-                    reportBuildPolicy: 'ALWAYS',
-                    results: [[path: 'target/allure-results']]
-                ])
-            }
+            allure([
+                includeProperties: false,
+                jdk: '',
+                properties: [],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'target/allure-results']]
+            ])
         }
     }
 }
