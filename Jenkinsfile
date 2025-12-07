@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        jdk 'jdk-17'
+        jdk ''
         maven 'maven 3.6.3'
     }
 
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 allure([
                     includeProperties: false,
-                    jdk: 'jdk-17',
+                    jdk: '',
                     properties: [],
                     reportBuildPolicy: 'ALWAYS',
                     results: [[path: 'target/allure-results']]
