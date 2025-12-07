@@ -13,8 +13,8 @@ public class BrowserFactory {
   }
 
   public Browser create() {
-    boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false"));
-    int slowMo = Integer.parseInt(System.getProperty("slowMo", "0"));
+    boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "true"));
+    int slowMo = Integer.parseInt(System.getProperty("slowMo", "100"));
     BrowserType.LaunchOptions options = new BrowserType.LaunchOptions()
         .setHeadless(isHeadless);
     if (slowMo > 0) {
