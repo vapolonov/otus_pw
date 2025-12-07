@@ -16,8 +16,12 @@ public class UIExtension implements AfterEachCallback, AfterAllCallback, BeforeA
   @Override
   public void beforeAll(ExtensionContext context) throws Exception {
     this.playwright = Playwright.create();
-    this.browser = new BrowserFactory(playwright).create();
-    this.browser = this.playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false).setSlowMo(100));
+    // Устанавливаем slowMo по умолчанию 100, если не указано иначе
+    if (System.getProperty("slowMo") == null) {
+      System.setProperty("slowMo", "100");
+    }
+    BrowserFactory browserFactory = new BrowserFactory(playwright);
+    this.browser = browserFactory.create();
   }
 
   @Override

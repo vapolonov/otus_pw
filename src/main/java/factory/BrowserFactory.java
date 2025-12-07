@@ -13,9 +13,16 @@ public class BrowserFactory {
   }
 
   public Browser create() {
+    boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+    int slowMo = Integer.parseInt(System.getProperty("slowMo", "0"));
+    BrowserType.LaunchOptions options = new BrowserType.LaunchOptions()
+        .setHeadless(isHeadless);
+    if (slowMo > 0) {
+      options.setSlowMo(slowMo);
+    }
     return switch (browserType) {
-      case "chrome" -> playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-      case "firefox" -> playwright.firefox().launch(new BrowserType.LaunchOptions().setHeadless(false));
+      case "chrome" -> playwright.chromium().launch(options);
+      case "firefox" -> playwright.firefox().launch(options);
       default -> null;
     };
   }

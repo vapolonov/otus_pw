@@ -19,8 +19,7 @@
     <guice.version>7.0.0</guice.version>
     <spotbugs.version>4.9.3.2</spotbugs.version>
     <mavencheckstyle.version>3.6.0</mavencheckstyle.version>
-<!--    <trace.directory>${project.build.directory}/traces/trace.zip</trace.directory>-->
-    <trace.directory>${project.build.sourceDirectory}/../traces/trace.zip</trace.directory>
+    <trace.directory>${project.build.directory}/traces/trace.zip</trace.directory>
     <base.url>https://otus.ru</base.url>
     <timeout>10</timeout>
   </properties>
