@@ -6,6 +6,7 @@ import annotations.Path;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import io.qameta.allure.Step;
 
 @Path("/subscription")
 public class SubscriptionPage extends AbsBasePage<SubscriptionPage> {
@@ -19,11 +20,13 @@ public class SubscriptionPage extends AbsBasePage<SubscriptionPage> {
       notVisibleListItem = tariffCards.first().getByText("Не предусмотрены"),
       tariffList = page.locator("//*[@id=\"packages\"]/div[2]/div[1]/div[2]/div/div[2]/div");
 
+  @Step("Проверить заголовок")
   public SubscriptionPage checkSectionTitle() {
     pageTitle.isVisible();
     return this;
   }
 
+  @Step("Выбрать Базовый тариф")
   public SubscriptionPage selectBasic() {
     click(detailedBtn.first());
     waitForVisible(notVisibleListItem);
@@ -33,6 +36,7 @@ public class SubscriptionPage extends AbsBasePage<SubscriptionPage> {
     return this;
   }
 
+  @Step("Нажать на кнопку Купить")
   public SubscriptionPage clickBuyBtn() {
     click(buyBtn.nth(0));
     return this;
