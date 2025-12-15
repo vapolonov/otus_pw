@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import annotations.Path;
 import com.microsoft.playwright.Locator;
 import io.qameta.allure.Step;
-
 import java.awt.*;
 
 @Path("/lessons/clickhouse/")
