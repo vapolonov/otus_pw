@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import annotations.Path;
 import com.microsoft.playwright.Locator;
+import io.qameta.allure.Step;
+
 import java.awt.*;
 
 @Path("/lessons/clickhouse/")
@@ -21,6 +23,7 @@ public class TeachersPage extends AbsBasePage<TeachersPage> {
       toRightBtn = teachersBlockContainer.locator(page.getByRole(BUTTON)).nth(1),
       toLeftBtn = teachersBlockContainer.locator(page.getByRole(BUTTON)).first();
 
+  @Step("Проверить, что блок с преподавателями виден")
   public TeachersPage checkTeachersBlockVisible() {
     teachersBlockContainer.scrollIntoViewIfNeeded();
     teachersBlockContainer.isVisible();
@@ -28,6 +31,7 @@ public class TeachersPage extends AbsBasePage<TeachersPage> {
     return this;
   }
 
+  @Step("Свайпнуть слайдер")
   public TeachersPage swipeTeachersSlider() {
     String teacher1 = teacherCard1.textContent();
     String teacher3 = teacherCard3.textContent();
@@ -37,6 +41,7 @@ public class TeachersPage extends AbsBasePage<TeachersPage> {
     return this;
   }
 
+  @Step("Выбрать карточку преподавателя")
   public String selectTeacherCard() {
     String cardContent = teacherCard3.textContent();
     click(teacherCard3);
